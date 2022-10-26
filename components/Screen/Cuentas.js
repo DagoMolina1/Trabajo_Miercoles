@@ -110,9 +110,9 @@ export default function Cuentas({route}) {
                         )}
                         name = "numeroCuenta"
                     />
-                    {errors.numeroCuenta?.type == 'required' && <Text style = {{fontSize: 12, color: 'white', marginBottom: 5}}>Se require este dato</Text>}
-                    {errors.numeroCuenta?.type == 'minLength' && <Text style = {{fontSize: 12, color: 'white', marginBottom: 5}}>Minimo 10 numeros</Text>}
-                    {errors.numeroCuenta?.type == 'pattern' && <Text style = {{fontSize: 12, color: 'white', marginBottom: 5}}>Solo numeros</Text>}
+                    {errors.numeroCuenta?.type == 'required' && <Text style = {{fontSize: 12, color: 'grey', marginBottom: 5}}>Se require este dato</Text>}
+                    {errors.numeroCuenta?.type == 'minLength' && <Text style = {{fontSize: 12, color: 'grey', marginBottom: 5}}>Minimo 10 numeros</Text>}
+                    {errors.numeroCuenta?.type == 'pattern' && <Text style = {{fontSize: 12, color: 'grey', marginBottom: 5}}>Solo numeros</Text>}
 
                     <Controller
                         control = {control}
@@ -175,14 +175,15 @@ export default function Cuentas({route}) {
                         )}
                         name = "fecha"
                     />
-
-                    {errors.fecha?.type == 'required' && <Text style = {{fontSize: 12, color: '#grey', marginBottom: 5}}>Se require este dato</Text>}
-                    {errors.fecha?.type == 'pattern' && <Text style = {{fontSize: 12, color: '#grey', marginBottom: 5}}>Solo fechas ejemplo 09/10/1999</Text>}
+                    {errors.fecha?.type == 'required' && <Text style = {{fontSize: 12, color: 'grey', marginBottom: 5}}>Se require este dato</Text>}
+                    {errors.fecha?.type == 'pattern' && <Text style = {{fontSize: 12, color: 'grey', marginBottom: 5}}>Solo fechas ejemplo 09/10/1999</Text>}
 
                     <Controller
                         control = {control}
                         rules = {{
                             required: true,
+                            pattern: /^[0-9]+$/,
+                            minLength: 7,
                         }}
                         render = {({field: {onChange, onBlur, value}}) => (
                             <TextInput
@@ -195,6 +196,9 @@ export default function Cuentas({route}) {
                         )}
                         name = "saldo"
                     />
+                    {errors.saldo?.type == 'required' && <Text style = {{fontSize: 12, color: 'grey', marginBottom: 5}}>Se solicita el saldo a enviar</Text>}
+                    {errors.saldo?.type == 'minLength' && <Text style = {{fontSize: 12, color: 'grey', marginBottom: 5}}>El minimo a enviar es de 1.000.000</Text>}
+                    {errors.saldo?.type == 'pattern' && <Text style = {{fontSize: 12, color: 'grey', marginBottom: 5}}>Solo se permiten numeros</Text>}
 
                     <TouchableOpacity style = {estilos.Touchable} onPress = {handleSubmit(onSubmit)}>
                         <Text style = {{
