@@ -5,8 +5,8 @@ import Logo from '../Logo/Logo'
 import { useForm, Controller } from 'react-hook-form'
 
 //Styles
-const principalColor = 'red'
-const subColor = '#9E9E9E'
+const principalColor = 'black'
+const subColor = '#41F5E2'
 const styles = StyleSheet.create({
     container: {
         marginTop: 0,
@@ -19,8 +19,8 @@ const styles = StyleSheet.create({
         backgroundColor: `${principalColor}`,
         width: '100%',
         height: 40,
-        color: 'transparent',
-        shadowColor: "grey",
+        color: 'black',
+        shadowColor: "black",
         shadowOffset: {
             width: 0,
             height: 2,
@@ -138,9 +138,9 @@ export default function Home({navigation, route}) {
                     )}
                     name = "userName"
                 />
-                {errors.userName?.type == 'required' && <Text style = {{fontSize: 11, color: '#7F2D28', marginBottom: 5}}>Se requiere este dato</Text>}
-                {errors.userName?.type == 'pattern' && <Text style = {{fontSize: 11, color: '#7F2D28', marginBottom: 5}}>Solo letras</Text>}
-                {errors.userName?.type == 'minLength' && <Text style = {{fontSize: 11, color: '#7F2D28', marginBottom: 5}}>Debe tener mas de 5 letras</Text>}
+                {errors.userName?.type == 'required' && <Text style = {{fontSize: 11, color: 'red', marginBottom: 5}}>Se requiere este dato</Text>}
+                {errors.userName?.type == 'pattern' && <Text style = {{fontSize: 11, color: 'red', marginBottom: 5}}>Solo letras</Text>}
+                {errors.userName?.type == 'minLength' && <Text style = {{fontSize: 11, color: 'red', marginBottom: 5}}>Debe tener mas de 5 letras</Text>}
 
                 <Controller
                     control = {control}
@@ -160,30 +160,31 @@ export default function Home({navigation, route}) {
                     )}
                     name = "rol"
                 />
-                {errors.rol?.type == 'required' && <Text style = {{fontSize: 11, color: '#7F2D28', marginBottom: 15}}>Se requiere este dato</Text>}
-                {errors.rol?.type == 'pattern' && <Text style = {{fontSize: 11, color: '#7F2D28', marginBottom: 15}}>Solo letras</Text>}
-                {errors.rol?.type == 'minLength' && <Text style = {{fontSize: 11, color: '#7F2D28', marginBottom: 15}}>Debe tener mas de 4 letras</Text>}
+                {errors.rol?.type == 'required' && <Text style = {{fontSize: 11, color: 'red', marginBottom: 15}}>Se requiere este dato</Text>}
+                {errors.rol?.type == 'pattern' && <Text style = {{fontSize: 11, color: 'red', marginBottom: 15}}>Solo letras</Text>}
+                {errors.rol?.type == 'minLength' && <Text style = {{fontSize: 11, color: 'red', marginBottom: 15}}>Debe tener mas de 4 letras</Text>}
 
                 <Controller
                     control = {control}
                     rules = {{
                         required: true,
                         pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$/,
-                        minLength: 6
+                        minLength: 6,
                     }}
                     render = {({field: {onChange, onBlur, value}}) => (
                         <TextInput
                             style = {styles.textInput}
                             onBlur = {onBlur}
                             onChangeText = {onChange}
+                            secureTextEntry = {true}
                             value = {value}
                             placeholder = {'Digitar contra'}
                         />
                     )}
                     name = "contrasena"
                 />
-                {errors.contrasena?.type == 'required' && <Text style = {{fontSize: 11, color: '#7F2D28', marginBottom: 15}}>La contrasena debe tener minimo 6 caracteres</Text>}
-                {errors.contrasena?.type == 'pattern' && <Text style = {{fontSize: 12, color: '#7F2D28', marginBottom: 15, width: '80%'}}>Minimo 8 caracteres,
+                {errors.contrasena?.type == 'required' && <Text style = {{fontSize: 11, color: 'red', marginBottom: 15}}>La contrasena debe tener minimo 6 caracteres</Text>}
+                {errors.contrasena?.type == 'pattern' && <Text style = {{fontSize: 12, color: 'red', marginBottom: 15, width: '80%'}}>Minimo 8 caracteres,
                     Maximo 15,
                     Al menos una letra mayúscula,
                     Al menos una letra minucula,
@@ -192,7 +193,7 @@ export default function Home({navigation, route}) {
                 {errors.contrasena?.type == 'minLength' && <Text style = {{fontSize: 11, color: '#7F2D28', marginBottom: 15}}>La contrasena debe tener minimo 6 caracteres</Text>}
 
                 <TouchableOpacity style = {styles.Touchable} onPress = {handleSubmit(onSubmit)}>
-                    <Text style = {{color: 'white', fontWeight: 'bold'}}>Ingresar</Text>
+                    <Text style = {{color: 'black', fontWeight: 'bold'}}>Ingresar</Text>
                 </TouchableOpacity>
 
                 <Text style = {{
@@ -202,7 +203,7 @@ export default function Home({navigation, route}) {
                         fontWeight: 'bold',
                         textAlign: 'center', 
                         width: '70%',
-                        backgroundColor: principalColor,
+                        backgroundColor: '#41F5E2',
                         borderRadius: 5
                     }}
                 >{result}</Text>

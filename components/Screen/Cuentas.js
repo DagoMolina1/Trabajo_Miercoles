@@ -4,14 +4,14 @@ import { useForm, Controller } from 'react-hook-form'
 import { Ionicons } from "@expo/vector-icons"
 import { SectionList } from 'react-native-web'
 
-const principalColor = 'red'
-const subColor = '#9E9E9E'
+const principalColor = '#D2F8FF'
+const subColor = '#F9B099'
 const estilos = StyleSheet.create({
         textBienvenida: {
             color: `black`,
             fontSize: 20,
             fontWeight: 'bold',
-            backgroundColor: `${principalColor}`,
+            backgroundColor: `${subColor}`,
             height: '100px',
             display: 'flex',
             justifyContent: 'center',
@@ -35,7 +35,7 @@ const estilos = StyleSheet.create({
             fontWeight: '600'
         },
         inputs: {
-            color: `white`,
+            color: `black`,
             width: '',
             textAlign: 'center',
             marginBottom: 25,
@@ -50,10 +50,10 @@ const estilos = StyleSheet.create({
             backgroundColor: `${principalColor}`
         },
         Touchable: {
-            backgroundColor: 'white',
+            backgroundColor: 'black',
         },
         comprobante: {
-            color: 'white',
+            color: 'black',
             fontSize: 17,
             textAlign: 'center'
         },
@@ -110,9 +110,9 @@ export default function Cuentas({route}) {
                         )}
                         name = "numeroCuenta"
                     />
-                    {errors.numeroCuenta?.type == 'required' && <Text style = {{fontSize: 12, color: 'grey', marginBottom: 5}}>Se require este dato</Text>}
-                    {errors.numeroCuenta?.type == 'minLength' && <Text style = {{fontSize: 12, color: 'grey', marginBottom: 5}}>Minimo 10 numeros</Text>}
-                    {errors.numeroCuenta?.type == 'pattern' && <Text style = {{fontSize: 12, color: 'grey', marginBottom: 5}}>Solo numeros</Text>}
+                    {errors.numeroCuenta?.type == 'required' && <Text style = {{fontSize: 12, color: 'red', marginBottom: 5}}>Se require este dato</Text>}
+                    {errors.numeroCuenta?.type == 'minLength' && <Text style = {{fontSize: 12, color: 'red', marginBottom: 5}}>Minimo 10 numeros</Text>}
+                    {errors.numeroCuenta?.type == 'pattern' && <Text style = {{fontSize: 12, color: 'red', marginBottom: 5}}>Solo numeros</Text>}
 
                     <Controller
                         control = {control}
@@ -133,10 +133,10 @@ export default function Cuentas({route}) {
                         )}
                         name = "identificacion"
                     />
-                    {errors.identificacion?.type == 'required' && <Text style = {{fontSize: 12, color: 'grey', marginBottom: 15}}>Se requiere el dato</Text>}
-                    {errors.identificacion?.type == 'pattern' && <Text style = {{fontSize: 12, color: 'grey', marginBottom: 15}}>Solo numeros</Text>}
-                    {errors.identificacion?.type == 'minLength' && <Text style = {{fontSize: 12, color: 'grey', marginBottom: 15}}>Minimo 10 numeros</Text>}
-                    {errors.identificacion?.type == 'maxLength' && <Text style = {{fontSize: 12, color: 'grey', marginBottom: 15}}>Usuario la identificacion no supera los 8 numeros</Text>}
+                    {errors.identificacion?.type == 'required' && <Text style = {{fontSize: 12, color: 'red', marginBottom: 15}}>Se requiere el dato</Text>}
+                    {errors.identificacion?.type == 'pattern' && <Text style = {{fontSize: 12, color: 'red', marginBottom: 15}}>Solo numeros</Text>}
+                    {errors.identificacion?.type == 'minLength' && <Text style = {{fontSize: 12, color: 'red', marginBottom: 15}}>Minimo 10 numeros</Text>}
+                    {errors.identificacion?.type == 'maxLength' && <Text style = {{fontSize: 12, color: 'red', marginBottom: 15}}>Usuario la identificacion no supera los 8 numeros</Text>}
 
                     <Controller
                         control = {control}
@@ -155,8 +155,8 @@ export default function Cuentas({route}) {
                         )}
                         name = "titular"
                     />
-                    {errors.titular?.type == 'required' && <Text style = {{fontSize: 12, color: 'grey', marginBottom: 5}}>Se require este dato</Text>}
-                    {errors.titular?.type == 'pattern' && <Text style = {{fontSize: 12, color: 'grey', marginBottom: 5}}>Solo letras</Text>}
+                    {errors.titular?.type == 'required' && <Text style = {{fontSize: 12, color: 'red', marginBottom: 5}}>Se require este dato</Text>}
+                    {errors.titular?.type == 'pattern' && <Text style = {{fontSize: 12, color: 'red', marginBottom: 5}}>Solo letras</Text>}
 
                     <Controller
                         control = {control}
@@ -175,15 +175,16 @@ export default function Cuentas({route}) {
                         )}
                         name = "fecha"
                     />
-                    {errors.fecha?.type == 'required' && <Text style = {{fontSize: 12, color: 'grey', marginBottom: 5}}>Se require este dato</Text>}
-                    {errors.fecha?.type == 'pattern' && <Text style = {{fontSize: 12, color: 'grey', marginBottom: 5}}>Solo fechas ejemplo 09/10/1999</Text>}
+                    {errors.fecha?.type == 'required' && <Text style = {{fontSize: 12, color: 'red', marginBottom: 5}}>Se require este dato</Text>}
+                    {errors.fecha?.type == 'pattern' && <Text style = {{fontSize: 12, color: 'red', marginBottom: 5}}>Solo fechas ejemplo 09/10/1999</Text>}
 
                     <Controller
                         control = {control}
                         rules = {{
                             required: true,
                             pattern: /^[0-9]+$/,
-                            minLength: 7,
+                            min: 1000000,
+                            max: 10000000,
                         }}
                         render = {({field: {onChange, onBlur, value}}) => (
                             <TextInput
@@ -196,13 +197,14 @@ export default function Cuentas({route}) {
                         )}
                         name = "saldo"
                     />
-                    {errors.saldo?.type == 'required' && <Text style = {{fontSize: 12, color: 'grey', marginBottom: 5}}>Se solicita el saldo a enviar</Text>}
-                    {errors.saldo?.type == 'minLength' && <Text style = {{fontSize: 12, color: 'grey', marginBottom: 5}}>El minimo a enviar es de 1.000.000</Text>}
-                    {errors.saldo?.type == 'pattern' && <Text style = {{fontSize: 12, color: 'grey', marginBottom: 5}}>Solo se permiten numeros</Text>}
+                    {errors.saldo?.type == 'required' && <Text style = {{fontSize: 12, color: 'red', marginBottom: 5}}>Se solicita el saldo a enviar</Text>}
+                    {errors.saldo?.type == 'min' && <Text style = {{fontSize: 12, color: 'red', marginBottom: 5}}>El minimo a enviar es de 1.000.000</Text>}
+                    {errors.saldo?.type == 'pattern' && <Text style = {{fontSize: 12, color: 'red', marginBottom: 5}}>Solo se permiten numeros</Text>}
+                    {errors.saldo?.type == 'max' && <Text style = {{fontSize: 12, color: 'red', marginBottom: 5}}>El maximo a enviar es de 10.000.000</Text>}
 
                     <TouchableOpacity style = {estilos.Touchable} onPress = {handleSubmit(onSubmit)}>
                         <Text style = {{
-                            color: `${principalColor}`,
+                            color: 'red',
                             fontWeight: 'bold',
                             borderRadius: 20,
                             padding: 10

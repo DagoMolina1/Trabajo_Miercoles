@@ -10,9 +10,10 @@ export default function Logo({oneTitle, twoTitle, colorBorder, textColor, colorT
             marginBottom: 8
         },
         textHome: {
+            textAlign: 'center',
             fontSize: 25,
             fontWeight: 'bold',
-            color: `${textColor}`
+            color: 'red'
         },
     })
 
